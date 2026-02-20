@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "editor": "Editor"
+  },
+  "footer": {
+    "joinDiscord": "Join Discord",
+    "allRightsReserved": "HyperPerms. All rights reserved."
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "tryAgain": "Try Again"
+  },
+  "errors": {
+    "somethingWentWrong": "Something went wrong",
+    "notFound": "Not found",
+    "invalidInput": "Invalid input",
+    "required": "This field is required",
+    "networkError": "Network error. Please try again."
+  },
+  "general": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "noResults": "No results found",
+    "copied": "Copied!"
+  },
+  "notFoundPage": {
+    "title": "Page non trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "goHome": "Aller à l'éditeur",
+    "browseWiki": "Visiter hyperperms.com"
+  }
+}

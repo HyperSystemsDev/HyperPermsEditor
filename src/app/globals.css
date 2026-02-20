@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-hp-primary: #6366f1;
+  --color-hp-secondary: #8b5cf6;
+  --color-hp-accent: #22d3ee;
+  --color-hp-success: #22c55e;
+  --color-hp-warning: #f59e0b;
+  --color-hp-danger: #ef4444;
+
+  /* Dark theme */
+  --color-hp-bg: #0f0f0f;
+  --color-hp-surface: #171717;
+  --color-hp-surface-2: #262626;
+  --color-hp-border: #404040;
+  --color-hp-text: #fafafa;
+  --color-hp-text-muted: #a3a3a3;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-hp-bg);
+  color: var(--color-hp-text);
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-hp-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-hp-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hp-text-muted);
+}
+
+/* Code styling */
+code:not(pre code) {
+  background-color: var(--color-hp-surface-2);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-hp-primary);
+  color: white;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-hp-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
