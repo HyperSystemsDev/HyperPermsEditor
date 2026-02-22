@@ -20,7 +20,13 @@ export function useToast() {
       message,
       duration: duration ?? 5000,
     }
-    setToasts(prev => [...prev, toast])
+    setToasts(prev => {
+      // Deduplicate: skip if a toast with the same type + title already exists
+      if (prev.some(t => t.type === type && t.title === title)) {
+        return prev
+      }
+      return [...prev, toast]
+    })
     return toast.id
   }, [])
 
@@ -33,7 +39,7 @@ export function useToast() {
   }, [addToast])
 
   const error = useCallback((title: string, message?: string) => {
-    return addToast('error', title, message, 0) // Errors don't auto-dismiss
+    return addToast('error', title, message, 10000)
   }, [addToast])
 
   const warning = useCallback((title: string, message?: string) => {

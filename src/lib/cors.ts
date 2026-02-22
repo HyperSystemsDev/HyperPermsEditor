@@ -6,9 +6,25 @@ export function getClientIp(request: NextRequest): string {
   return ip
 }
 
+function extractHost(url: string): string | null {
+  try {
+    const parsed = new URL(url)
+    return parsed.host
+  } catch {
+    return null
+  }
+}
+
 export function validateOrigin(request: NextRequest): boolean {
   const origin = request.headers.get('origin')
   const referer = request.headers.get('referer')
+
+  // Same-origin check: compare Origin/Referer host against the request's Host header
+  const requestHost = request.headers.get('x-forwarded-host') || request.headers.get('host')
+  const sourceHost = extractHost(origin || referer || '')
+  if (requestHost && sourceHost && requestHost === sourceHost) {
+    return true
+  }
 
   const allowedOrigins = [
     process.env.NEXT_PUBLIC_APP_URL,

@@ -83,7 +83,20 @@ export default function EditorPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to save')
+        switch (response.status) {
+          case 403:
+            showError('Save blocked', 'The request was rejected by the server')
+            return
+          case 404:
+            showError('Session expired', 'This editing session is no longer available')
+            return
+          case 429:
+            showError('Too many requests', 'Please wait a moment before trying again')
+            return
+          default:
+            showError('Failed to save', 'An unexpected error occurred. Please try again')
+            return
+        }
       }
 
       const changes = countChanges(session.original, session.current)
@@ -96,9 +109,8 @@ export default function EditorPage() {
       })
 
       success('Changes saved', `${changes.total} change${changes.total !== 1 ? 's' : ''} saved successfully`)
-    } catch (err) {
-      console.error('Failed to save:', err)
-      showError('Failed to save', 'Please try again or check your connection')
+    } catch {
+      showError('Connection error', 'Could not reach the server. Check your network connection')
     } finally {
       setSaving(false)
     }
